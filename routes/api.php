@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\V1\LineController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// メッセージ送信
+Route::get('/v1/delivery', [LineController::class, 'delivery']);
+
+// Webhookでメッセージを受け取る受け口
+Route::post('/v1/callback', [LineController::class, 'callback']);
