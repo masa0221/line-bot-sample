@@ -19,4 +19,6 @@ use App\Http\Controllers\Api\V1\LineController;
 Route::get('/v1/delivery', [LineController::class, 'delivery']);
 
 // Webhookでメッセージを受け取る受け口
-Route::post('/v1/callback', [LineController::class, 'callback']);
+Route::post('/v1/callback', [LineController::class, 'callback'])
+    ->middleware('signedbyline');
+
