@@ -1,5 +1,12 @@
 ## 概要
-- LINEボットのサンプルです
+LINEボットのサンプルです
+
+以下の機能が実装されています。
+- ボットを友だち登録しているメンバーに同じメッセージを送信する
+- メッセージに返信する
+    - 何パターンか完全一致で返答
+    - 「？」だけ部分一致で返信
+    - 「今日の天気は？」と聞くと今日の天気を返信
 
 ## 準備
 ### 1. ダウンロード
@@ -38,6 +45,18 @@ sail artisan key:generate
 
 
 ## APIの実行
+### APIキーの取得
+`.env`の以下は値の設定が必須になります
+```
+LINE_CHANNEL_ACCESS_TOKEN=
+LINE_CHANNEL_SECRET=
+
+OPENWEATHERMAP_API_KEY=
+OPENWEATHERMAP_LATITUDE=
+OPENWEATHERMAP_LONGITUDE=
+```
+
+### curlから実行
 
 ```
 curl --header 'Accept: application/json' http://localhost/api/v1/delivery
@@ -46,11 +65,18 @@ curl --header 'Accept: application/json' http://localhost/api/v1/delivery
 ```
 curl -XPOST --header 'Accept: application/json' http://localhost/api/v1/callback
 ```
+※ヘッダーの署名をチェックしているので上記のまま実行すると必ず「403 Forbidden」になります
 
 
 ## ngrokについて
 Webhookをローカルで確認するためには、ngrokが便利です。  
 
-ngrok - secure introspectable tunnels to localhost  
+ngrok（エヌジーロック）
 https://ngrok.com/
+
+起動方法
+```
+ngrok http -region=jp 80
+```
+※-regionは指定なしでも動きますが、LINEのWebhookが失敗する可能性が高いです
 
