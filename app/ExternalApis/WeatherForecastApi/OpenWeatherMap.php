@@ -17,7 +17,7 @@ class OpenWeatherMap implements WeatherForecastApi {
      * OpenWeatherMapから天気予報データを取得
      *
      * @param float $latitude 緯度
-     * @param float $longitude 軽度
+     * @param float $longitude 経度
      *
      * @return string OpenWeatherMapから取得したJSON
      *

@@ -12,7 +12,7 @@ class WeatherForecaster {
     /**
      * @param WeatherForecastApi 天気予報API
      * @param float $latitude 緯度
-     * @param float $longitude 軽度
+     * @param float $longitude 経度
      */
     public function __construct(WeatherForecastApi $weatherForecastApi, $latitude, $longitude)
     {

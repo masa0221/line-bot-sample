@@ -7,7 +7,7 @@ interface WeatherForecastApi {
      * APIから天気予報データを取得
      *
      * @param float $latitude 緯度
-     * @param float $longitude 軽度
+     * @param float $longitude 経度
      *
      * @return string APIから取得したJSON
      */
