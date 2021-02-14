@@ -33,9 +33,10 @@ class LineController extends Controller
             return response()->json(['message' => 'received(no events)']);
         }
 
+        $replyMessageGenerator = new ReplyMessageGenerator();
+        $deliver = new Deliver(env('LINE_CHANNEL_ACCESS_TOKEN'), env('LINE_CHANNEL_SECRET'));
         foreach ($recievedMessages as $recievedMessage) {
             // 2. 受け取ったメッセージの内容から返信するメッセージを生成
-            $replyMessageGenerator = new ReplyMessageGenerator();
             $replyMessage = $replyMessageGenerator->generate($recievedMessage->getText());
 
             Log::debug('message.text: ' .$recievedMessage->getText());
@@ -43,7 +44,6 @@ class LineController extends Controller
             Log::debug('replyToken: ' . $recievedMessage->getReplyToken());
 
             // 3. 返信メッセージを返信先に送信
-            $deliver = new Deliver(env('LINE_CHANNEL_ACCESS_TOKEN'), env('LINE_CHANNEL_SECRET'));
             $deliver->reply($recievedMessage->getReplyToken(), $replyMessage);
         }
 
