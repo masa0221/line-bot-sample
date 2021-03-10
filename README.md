@@ -71,7 +71,7 @@ curl -XPOST --header 'Accept: application/json' http://localhost/api/v1/callback
 ## ngrokについて
 Webhookをローカルで確認するためには、ngrokが便利です。  
 
-ngrok（エヌジーロック）
+ngrok（ [en-grok](https://ngrok.com/docs#name) エングロック）  
 https://ngrok.com/
 
 起動方法
