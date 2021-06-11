@@ -21,10 +21,6 @@ cp .env.example .env
 
 ### 3. `composer` を使ってパッケージをインストール
 ```
-docker run --rm -it -v $PWD:/app -w /app composer composer install
-```
-
-```
 docker run --rm -it -v $PWD:/app -w /app composer composer install --ignore-platform-reqs
 ```
 ※ `--ignore-platform-reqs` をつけずに実行すると、 `linecorp/line-bot-sdk 6.2.0 requires ext-sockets` というエラーが出ますが、 `laravel.test` コンテナで `ext-sockets` のPHPモジュールが入っているので問題ありません。
