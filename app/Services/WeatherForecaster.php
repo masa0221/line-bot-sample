@@ -28,11 +28,11 @@ class WeatherForecaster {
      */
     public function forecast()
     {
-        $weacherJson = $this->weatherForecastApi->fetch(
+        $weatherJson = $this->weatherForecastApi->fetch(
             $this->latitude,
             $this->longitude
         );
 
-        return $this->weatherForecastApi->parse($weacherJson);
+        return $this->weatherForecastApi->parse($weatherJson);
     }
 }

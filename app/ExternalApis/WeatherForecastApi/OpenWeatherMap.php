@@ -50,11 +50,11 @@ class OpenWeatherMap implements WeatherForecastApi {
      */
     public function parse($json): string
     {
-        $weacherInfo = json_decode($json);
-        if (!isset($weacherInfo->daily[0]->weather[0]->description)) {
+        $weatherInfo = json_decode($json);
+        if (!isset($weatherInfo->daily[0]->weather[0]->description)) {
             return '';
         }
 
-        return $weacherInfo->daily[0]->weather[0]->description;
+        return $weatherInfo->daily[0]->weather[0]->description;
     }
 }
