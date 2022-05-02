@@ -62,9 +62,11 @@ class ReplyMessageGeneratorTest extends TestCase
     public function testGeneratorWithWeatherForecaster($expected, $apiResult)
     {
         // WeatherForecaster#forecast の挙動を変更するモックを作成
+        /** @var MockInterface */
         $weatherForecasterMock = Mockery::mock(WeatherForecaster::class);
         $weatherForecasterMock->shouldReceive('forecast')->andReturn($apiResult);
 
+        /** @var WeatherForecaster $weatherForecasterMock */
         $replyMessageGenerator = new ReplyMessageGenerator($weatherForecasterMock);
 
         $this->assertSame($replyMessageGenerator->generate('今日の天気は？'), $expected);
