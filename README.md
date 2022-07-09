@@ -77,9 +77,21 @@ Webhookをローカルで確認するためには、ngrokが便利です。
 ngrok（ [en-grok](https://ngrok.com/docs#name) エングロック）  
 https://ngrok.com/
 
-起動方法
+### 起動方法
+※regionは指定なしでも動きますが、LINEのWebhookが失敗する可能性が高いです
+
+#### v3 の場合
+```
+ngrok http --region=jp 80
+```
+v3 から `--region` に変わりました
+
+#### v2 の場合
 ```
 ngrok http -region=jp 80
 ```
-※-regionは指定なしでも動きますが、LINEのWebhookが失敗する可能性が高いです
 
+```
+ERROR:  unknown shorthand flag: 'r' in -region=jp
+```
+以下のエラーが出る場合は、 v3 のコマンドをお試しください。
