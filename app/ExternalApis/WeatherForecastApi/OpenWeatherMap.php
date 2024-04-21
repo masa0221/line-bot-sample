@@ -32,7 +32,7 @@ class OpenWeatherMap implements WeatherForecastApi {
             'lang' => 'ja',
             'appid' => $this->apiKey,
         ];
-        $url = 'https://api.openweathermap.org/data/2.5/onecall?'.http_build_query($query_data);
+        $url = 'https://api.openweathermap.org/data/3.0/onecall?'.http_build_query($query_data);
 
         $client = new Client();
         $response = $client->request('GET', $url);
